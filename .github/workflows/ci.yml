@@ -1,0 +1,24 @@
+name : Node.js CI
+
+# Workflow operation conditions Setting
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+
+# Task Definition
+
+jobs:
+  bulid:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '14'
+    - run: npm install
+    - run: npm test
